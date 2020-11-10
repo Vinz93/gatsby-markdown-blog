@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Header from "../components/Header";
 
 const Layout = ({ data }) => {
@@ -10,8 +10,9 @@ const Layout = ({ data }) => {
         const { title, tags, path } = page.frontmatter;
         return (
           <div key={page.id}>
-            <h4>{title}</h4>
-            <p>path: {path}</p>
+            <Link to={path}>
+              <h4>{title}</h4>
+            </Link>
             <p>tags: {tags.join(", ")}</p>
           </div>
         );
