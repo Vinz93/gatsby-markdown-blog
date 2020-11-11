@@ -4,6 +4,7 @@ import React from "react";
 const BlogPost = ({ data, pageContext }) => {
   const { html, frontmatter } = data.markdownRemark;
   const { title, tags, date } = frontmatter;
+  const { next, prev } = pageContext;
   return (
     <div>
       <h2
@@ -21,9 +22,8 @@ const BlogPost = ({ data, pageContext }) => {
       </p>
       <div className={"blog-post"} dangerouslySetInnerHTML={{ __html: html }} />
       <br />
-      {pageContext?.prev && <Link to={pageContext.prev}>prev</Link>}{" "}
-      {pageContext?.next && <Link to={pageContext.next}>next</Link>}{" "}
-      <Link to={"/"}>home</Link>
+      {prev && <Link to={prev}>Prev</Link>}{" "}
+      {next && <Link to={next}>Next</Link>} <Link to={"/"}>home</Link>
     </div>
   );
 };
