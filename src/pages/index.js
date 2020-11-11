@@ -7,16 +7,18 @@ const Layout = ({ data }) => {
     <div>
       <Header />
       {data.markPages.nodes.map(page => {
-        const { title, tags, path } = page.frontmatter;
+        const { title, path } = page.frontmatter;
         return (
           <div key={page.id}>
             <Link to={path}>
               <h4>{title}</h4>
             </Link>
-            <p>tags: {tags.join(", ")}</p>
           </div>
         );
       })}
+      <div>
+        <Link to={"/tags"}>My tags</Link>
+      </div>
     </div>
   );
 };
@@ -29,7 +31,6 @@ export const query = graphql`
         frontmatter {
           title
           path
-          tags
         }
       }
     }
